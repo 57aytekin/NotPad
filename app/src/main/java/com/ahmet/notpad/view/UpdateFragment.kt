@@ -36,7 +36,7 @@ class UpdateFragment : Fragment() {
         val editage = view.findViewById<TextView>(R.id.editAge2)
 
         editname.setText(args.currentUser.name)
-        editage.setText(args.currentUser.age.toString())
+        editage.setText(args.currentUser.age?.toString())
 
         val insertButton = view.findViewById<Button>(R.id.updateButton)
 

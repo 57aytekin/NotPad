@@ -41,12 +41,12 @@ class AddFragment : Fragment() {
             var edit1=editname.text.toString()
             var edit2=editage.text.toString()
 
-            if (TextUtils.isEmpty(edit1) || TextUtils.isEmpty(edit2)) {
+            if (TextUtils.isEmpty(edit1)) {
                 insertButton.isEnabled=true
-                Toast.makeText(requireContext(), "Boş Bırakamazsın", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "İsim boş bırakılamaz!", Toast.LENGTH_SHORT).show()
             } else {
-
-                val user = User(0, edit1, edit2.toInt())
+                val age : Int? = if (edit2.isEmpty()) null else edit2.toInt()
+                val user = User( name = edit1, age = age)
 
                 userViewModel.addUser(user)
                 Toast.makeText(requireContext(), "Kullanıcı Eklendi", Toast.LENGTH_SHORT).show()
