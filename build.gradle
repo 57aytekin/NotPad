@@ -5,8 +5,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
+        def dagger_version = "2.40.5"
         classpath 'com.android.tools.build:gradle:7.0.4'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
+        classpath("com.google.dagger:hilt-android-gradle-plugin:$dagger_version")
 
         def nav_version = "2.4.2"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")

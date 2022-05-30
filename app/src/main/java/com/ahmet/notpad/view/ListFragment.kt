@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,11 +16,13 @@ import com.ahmet.notpad.R
 import com.ahmet.notpad.adapter.RecyclerviewAdapter
 import com.ahmet.notpad.data.UserViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class ListFragment : Fragment() {
     private lateinit var recyclerviewAdapter: RecyclerviewAdapter
-    private lateinit var userViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +35,6 @@ class ListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view= inflater.inflate(R.layout.fragment_list, container, false)
-
-        userViewModel=ViewModelProvider(this).get(UserViewModel::class.java)
 
         val fab=view.findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener {

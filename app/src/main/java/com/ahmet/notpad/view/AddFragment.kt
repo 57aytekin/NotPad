@@ -10,14 +10,17 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.text.TextUtilsCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ahmet.notpad.R
 import com.ahmet.notpad.data.User
 import com.ahmet.notpad.data.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddFragment : Fragment() {
-    private lateinit var userViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,6 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         val editname = view.findViewById<TextView>(R.id.editName)
         val editage = view.findViewById<TextView>(R.id.editAge)
         val insertButton = view.findViewById<Button>(R.id.insertButton)

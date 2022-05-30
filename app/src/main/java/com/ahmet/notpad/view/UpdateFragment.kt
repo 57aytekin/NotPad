@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
@@ -14,9 +15,11 @@ import androidx.navigation.fragment.navArgs
 import com.ahmet.notpad.R
 import com.ahmet.notpad.data.User
 import com.ahmet.notpad.data.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UpdateFragment : Fragment() {
-    private lateinit var userViewModel: UserViewModel
+    private val userViewModel: UserViewModel by viewModels()
     private val args by navArgs<UpdateFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,6 @@ class UpdateFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_update, container, false)
 
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         val editname = view.findViewById<TextView>(R.id.editName2)
         val editage = view.findViewById<TextView>(R.id.editAge2)
 
